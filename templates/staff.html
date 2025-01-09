@@ -8,6 +8,8 @@
     </head>
     <body>
         <header>
+            <img class="overlay" src="../static/images/bg stuff.png" style="position: absolute; top: 0; left: 0; z-index: -1; width: 100%; max-width: 100%; height: auto;">
+
             <img class="logo" src="../static/images/logo.png" alt="Logo">
             <nav>
                 <ul class="nav_links">
@@ -19,8 +21,14 @@
             </nav>
             <a class="server_link" href="https://discord.gg/5N4b445JDg"><button>Server Link</button></a>
         </header>
-        <h1>
-            Welcome, {{username}}!
-        </h1>
+        <h1 style="font-size: 75px ; font-weight: 900; text-align: center;">Staff Panel</h1>
+        <div style="margin-left: 100px; display: flex;">
+            <img src="{{image}}" style="border-radius: 100%; width: 150px;">
+            <h1 style="margin-left: 30px;margin-top: 30px; font-size: 50px;">
+                Welcome, {{username}}!
+            </h1>
+        </div>
+        <h1 style="margin-left: 290px; font-size: 30px; margin-top: -50px;">Current Role: {{role}}</h1>
+
     </body>
 </html>

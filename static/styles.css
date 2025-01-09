@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
 
+body {
+    background-color: #24252A;
+    height:100%;
+    margin: 0;
+    overflow: hidden;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #24252A;
 }
 
 li, a, button, h1 {
@@ -26,6 +32,7 @@ header {
     width: 100px;
     height: 100px;
     cursor: pointer;
+    filter: drop-shadow(5px 10px 3px #24252A);
 }
 
 .nav_links {
@@ -58,4 +65,19 @@ button {
 button:hover {
     background-color: transparent;
     box-shadow: 0 0 0 3px #ff7300;
+}
+
+.staff-apply {
+    padding: 9px 25px;
+    background-color: #007be0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    padding: 15px 12px;
+}
+
+.staff-apply:hover {
+    background-color: transparent;
+    box-shadow: 0 0 0 3px #007be0;
 }

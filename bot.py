@@ -19,6 +19,7 @@ class MyBot(commands.Bot):
 
         # Add API routes
         self.api_app.router.add_get("/staff_check", self.staff_check)
+        self.api_app.router.add_get("/top_role", self.top_role)
 
     async def setup_hook(self):
         """Setup the aiohttp server."""
@@ -33,7 +34,26 @@ class MyBot(commands.Bot):
         if self.api_runner:
             await self.api_runner.cleanup()
         await super().close()
+    async def top_role(self, request):
+        """Check if a user has the 'Staff Board' role."""
+        user_id = request.query.get("id")
+        if not user_id:
+            return web.json_response({"error": "Missing 'id' parameter"}, status=400)
 
+        try:
+            guild = discord.utils.get(self.guilds, id=1117521010175004694)
+            if not guild:
+                return web.json_response({"error": "Guild not found"}, status=404)
+
+            user = guild.get_member(int(user_id))
+            if not user:
+                return web.json_response({"error": "User not found in the guild"}, status=404)
+
+            return web.json_response({"role":str(user.top_role)})
+
+        except Exception as e:
+            print(f"Error in staff_check: {e}")
+            return web.json_response({"error": str(e)}, status=500)
     async def staff_check(self, request):
         """Check if a user has the 'Staff Board' role."""
         user_id = request.query.get("id")
@@ -60,12 +80,6 @@ class MyBot(commands.Bot):
         except Exception as e:
             print(f"Error in staff_check: {e}")
             return web.json_response({"error": str(e)}, status=500)
-
-    #async def get_guild(self, request):
-     #   params = request.query.get("id")
-      #  guild = discord.utils.get(self.guilds, id=int(params))
-
-       # return web.json_response({"name" : guild.name})
 
     async def on_ready(self):
         print(f"Bot is ready. Logged in as {self.user}")
