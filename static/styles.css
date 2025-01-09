@@ -59,9 +59,3 @@ button:hover {
     background-color: transparent;
     box-shadow: 0 0 0 3px #ff7300;
 }
-
-#invalid {
-    font-size: 500px;
-    color: #edf0f1;
-    font-size: 100px;
-}

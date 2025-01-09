@@ -1,7 +1,6 @@
 from quart import Quart, render_template, request, session, redirect, url_for
 from quart_discord import DiscordOAuth2Session
 import aiohttp
-import asyncio
 from dotenv import dotenv_values
 config = dotenv_values(".env")
 
